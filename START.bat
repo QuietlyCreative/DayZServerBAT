@@ -5,7 +5,7 @@ COLOR 0A
     SET SteamLogin=username userPassw0rd
     SET DayZBranch=223350
     SET DayZServerPath="C:\Servers\DayZServer"
-    SET SteamCMDPath="C:\Servers\steamCMD"
+    SET SteamCMDPath="C:\Servers\SteamCMD"
 	SET BECPath="C:\Servers\BEC"
 	:: Server specific vars
 	SET ServerProfile="PROFILE_NAME"
@@ -27,7 +27,7 @@ pause
 :choice
 cls
 echo Press S to skip checking for updates.
-echo Will continue to updates check momentarily... 
+echo Will continue to updates check momentarily...
 choice /t 6 /c su /d u
 if %errorlevel% EQU 2 goto checkServer
 if %errorlevel% EQU 1 goto skipUpdates
@@ -53,7 +53,7 @@ goto startBEC
 :loopServer
 FOR /L %%s IN (30,-1,0) DO (
 	cls
-	echo Server is running. Checking again in %%s seconds.. 
+	echo Server is running. Checking again in %%s seconds..
 	timeout 1 >nul
 )
 goto checkServer
@@ -91,7 +91,7 @@ cd "%DayZServerPath%"
 start DZSALModServer.exe -instanceId=1 -config=serverDZ.cfg -profiles=%ServerProfile% -port=%ServerPort% -mod=!MODS_TO_LOAD!% -servermod=!SERVERMODS_TO_LOAD!% -cpuCount=2 -noFilePatching -dologs -adminlog -freezecheck
 FOR /l %%s IN (45,-1,0) DO (
 	cls
-	echo Initializing server, wait %%s seconds to initialize BEC.. 
+	echo Initializing server, wait %%s seconds to initialize BEC..
 	timeout 1 >nul
 )
 
@@ -115,7 +115,7 @@ goto checkServer
 cls
 FOR /L %%s IN (%SteamCMDDelay%,-1,0) DO (
 	cls
-	echo Checking for mod updates in %%s seconds.. 
+	echo Checking for mod updates in %%s seconds..
 	timeout 1 >nul
 )
 echo Updating Steam Workshop Mods...
